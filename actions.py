@@ -39,7 +39,7 @@ def main():
     execute_command("sudo dpkg -i google-chrome-stable_current_amd64.deb > /dev/null 2>&1; apt-get -fy install > /dev/null 2>&1")
     day_num = login_in_club(username, password)
     try:
-        with open("sign_in_days", w) as f:
+        with open("sign_in_days", "w") as f:
             f.write(day_num)
     except Exception as e:
         logging.error(e)
