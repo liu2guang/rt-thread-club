@@ -45,8 +45,7 @@ def main():
     except Exception as e:
         logging.error(e)
         sys.exit(1)
-    os.system("echo sign_in_days.txt")
-    
+
 
 if __name__ == "__main__":
     init_logger()
