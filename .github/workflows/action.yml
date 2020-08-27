@@ -41,11 +41,10 @@ jobs:
       env:
         CLUB_USERNAME: ${{ secrets.USERNAME }}
         CLUB_PASSWORD: ${{ secrets.PASSWORD }}
-        CLUB_DAY_NUMERS: 0
       run: |
         python actions.py
         CLUB_DAY_NUMERS=$(cat sign_in_days.txt)
-        echo $CLUB_DAY_NUMERS
+        echo "::set-env name=CLUB_DAY_NUMERS::$(cat sign_in_days.txt)"
     - name: 'Get Date'
       run: echo "::set-env name=REPORT_DATE::$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')"
     - name: Send email
@@ -55,8 +54,8 @@ jobs:
         server_port: 465
         username: ${{ secrets.MAIL_USERNAME }}
         password: ${{ secrets.EMAIL_PASSWORD }}
-        subject: 签到小助手提醒您：(${{env.REPORT_DATE}}) (${{env.CLUB_DAY_NUMERS}})
-        body: None
+        subject: 签到小助手提醒您 (${{env.REPORT_DATE}})
+        body: (${{env.CLUB_DAY_NUMERS}})
         to: ${{ secrets.TEST_EMAIL }}
         from: GitHub Actions
         content_type: text/html
