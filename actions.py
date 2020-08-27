@@ -39,7 +39,6 @@ def main():
     execute_command("sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb > /dev/null 2>&1")
     execute_command("sudo dpkg -i google-chrome-stable_current_amd64.deb > /dev/null 2>&1; apt-get -fy install > /dev/null 2>&1")
     day_num = login_in_club(username, password)
-    print("day_num = {0}".format(day_num))
     try:
         with open("sign_in_days.txt", "w") as f:
             f.write(day_num)
