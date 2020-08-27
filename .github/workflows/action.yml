@@ -47,26 +47,15 @@ jobs:
     - name: 'Get Date'
       run: echo "::set-env name=REPORT_DATE::$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')"
     - name: Send email
-      uses: dawidd6/action-send-mail@master
+      uses: AlexisMateo/sendmail-action@5
       with:
-        server_address: smtp.163.com
-        server_port: 465
-        username: ${{ secrets.MAIL_USERNAME }}
-        password: ${{ secrets.EMAIL_PASSWORD }}
-        subject: Shanghai Weather Report (${{env.REPORT_DATE}})
-        body: "test"
-        to: ${{ secrets.TEST_EMAIL }}
+        smtp-server: smtp.163.com
+        smtp-server-port: 465
+        auth-user: ${{ secrets.MAIL_USERNAME }}
+        auth-password: ${{secrets.EMAIL_PASSWORD }}
+        subject: RT-Thread 论坛签到小助手 (${{env.REPORT_DATE}})
+        body: "hello world"
         from: GitHub Actions
-        content_type: text/html
-#     - name: Send email
-#       uses: AlexisMateo/sendmail-action@5
-#       with:
-#         smtp-server: smtp.163.com
-#         smtp-server-port: 465
-#         auth-user: ${{ secrets.MAIL_USERNAME }}
-#         auth-password: ${{secrets.EMAIL_PASSWORD }}
-#         subject: RT-Thread 论坛签到小助手 (${{env.REPORT_DATE}})
-#         body: "hello world"
-#         from: GitHub Actions
-#         to: ${{ secrets.TEST_EMAIL }}
-#         commit-message: true
+        to: ${{ secrets.TEST_EMAIL }}
+        is-tls: false
+        commit-message: true
