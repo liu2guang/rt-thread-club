@@ -1,2 +1,3 @@
-# rt-thread-club
-RT-Thread 论坛自动签到机器人
+# 使用教程
+
+- fork 本仓库到你的仓库
