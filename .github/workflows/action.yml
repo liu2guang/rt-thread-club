@@ -55,7 +55,7 @@ jobs:
         username: ${{ secrets.MAIL_USERNAME }}
         password: ${{ secrets.EMAIL_PASSWORD }}
         subject: 签到小助手提醒您 (${{env.REPORT_DATE}})
-        body: (${{env.CLUB_DAY_NUMERS}})
+        body: ${{env.CLUB_DAY_NUMERS}}
         to: ${{ secrets.TEST_EMAIL }}
         from: GitHub Actions
         content_type: text/html
