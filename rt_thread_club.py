@@ -45,4 +45,5 @@ def login_in_club(user_name, pass_word):
     else:
         day_num = element.text
         logging.info("signed in today : {0}".format(day_num))
+        os.environ['CLUB_DAY_NUMERS']=day_num
         driver.quit()
