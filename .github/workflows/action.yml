@@ -41,10 +41,11 @@ jobs:
       env:
         CLUB_USERNAME: ${{ secrets.USERNAME }}
         CLUB_PASSWORD: ${{ secrets.PASSWORD }}
+        CLUB_DAY_NUMERS: 0
       run: |
         python actions.py
-        cat sign_in_days.txt
         CLUB_DAY_NUMERS=$(cat sign_in_days.txt)
+        echo $CLUB_DAY_NUMERS
     - name: 'Get Date'
       run: echo "::set-env name=REPORT_DATE::$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')"
     - name: Send email
@@ -55,7 +56,7 @@ jobs:
         username: ${{ secrets.MAIL_USERNAME }}
         password: ${{ secrets.EMAIL_PASSWORD }}
         subject: Shanghai Weather Report (${{env.REPORT_DATE}})
-        body: $(cat sign_in_days.txt)
+        body: (${{env.CLUB_DAY_NUMERS}})
         to: ${{ secrets.TEST_EMAIL }}
         from: GitHub Actions
         content_type: text/html
