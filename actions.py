@@ -39,6 +39,7 @@ def main():
     execute_command("sudo dpkg -i google-chrome-stable_current_amd64.deb > /dev/null 2>&1; apt-get -fy install > /dev/null 2>&1")
     day_num = login_in_club(username, password)
     execute_command("sudo export CLUB_DAY_NUMERS={0}".format(day_num))
+    os.system("env")
 
     
 if __name__ == "__main__":
