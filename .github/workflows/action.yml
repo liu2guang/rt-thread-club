@@ -54,4 +54,4 @@ jobs:
         subject: RT-Thread 论坛签到小助手 (${{env.REPORT_DATE}})
         body: "hello world"
         from: GitHub Actions
-        to: ${{ secrets.MAIL_USERNAME }}
+        to: ${{ secrets.TEST_EMAIL }}
