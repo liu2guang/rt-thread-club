@@ -31,8 +31,7 @@ def login_in_club(user_name, pass_word):
         element = driver.find_element_by_link_text(u"立即签到")
     except Exception as e:
         logging.error("Error message : {0}".format(e))
-
-    if element:
+    else:
         element.click()
         logging.info("sign in success!")
 
@@ -43,9 +42,7 @@ def login_in_club(user_name, pass_word):
         element = driver.find_element_by_xpath("/html[1]/body[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]/a[1]")
     except Exception as e:
         logging.error("Error message : {0}".format(e))
-    if element:
+    else:
         day_num = element.text
         logging.info("signed in today : {0}".format(day_num))
         driver.quit()
-
-    driver.quit()

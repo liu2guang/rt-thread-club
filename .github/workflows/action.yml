@@ -44,3 +44,16 @@ jobs:
         CLUB_PASSWORD: ${{ secrets.PASSWORD }}
       run: |
         python actions.py
+    - name: Send email
+      uses: AlexisMateo/sendmail-action@5
+      with:
+        smtp-server: smtp.163.com
+        smtp-server-port: 465
+        auth-user: ${{ secrets.MAIL_USERNAME }}
+        auth-password: ${{secrets.EMAIL_PASSWORD }}
+        subject: RT-Thread 论坛签到小助手 (${{env.REPORT_DATE}})
+        body: "hello world"
+        from: GitHub Actions
+        to: ${{ secrets.MAIL_USERNAME }}
+        is-tls: false
+        commit-message: true
