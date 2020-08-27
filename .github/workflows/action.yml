@@ -43,7 +43,8 @@ jobs:
         CLUB_PASSWORD: ${{ secrets.PASSWORD }}
       run: |
         python actions.py
-        echo sign_in_days
+        echo sign_in_days.txt
+        ls -al
     - name: 'Get Date'
       run: echo "::set-env name=REPORT_DATE::$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')"
     - name: Send email
