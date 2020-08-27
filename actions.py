@@ -41,8 +41,11 @@ def main():
     try:
         with open("sign_in_days", w) as f:
             f.write(day_num)
-
+    except Exception as e:
+        logging.error(e)
+        sys.exit(1)
     
+
 if __name__ == "__main__":
     init_logger()
     main()
