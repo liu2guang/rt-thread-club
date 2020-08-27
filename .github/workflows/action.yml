@@ -41,6 +41,7 @@ jobs:
       env:
         CLUB_USERNAME: ${{ secrets.USERNAME }}
         CLUB_PASSWORD: ${{ secrets.PASSWORD }}
+        CLUB_DAY_NUMERS: 0
       run: |
         python actions.py
     - name: 'Get Date'
