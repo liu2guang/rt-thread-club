@@ -52,9 +52,6 @@ jobs:
         auth-user: ${{ secrets.MAIL_USERNAME }}
         auth-password: ${{secrets.EMAIL_PASSWORD }}
         subject: RT-Thread 论坛签到小助手 (${{env.REPORT_DATE}})
-        title: RT-Thread 论坛签到小助手
         body: "hello world"
         from: GitHub Actions
         to: ${{ secrets.MAIL_USERNAME }}
-        is-tls: false
-        commit-message: true
