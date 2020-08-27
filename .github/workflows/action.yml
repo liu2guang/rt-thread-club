@@ -57,3 +57,4 @@ jobs:
         body: "hello world"
         from: GitHub Actions
         to: ${{ secrets.TEST_EMAIL }}
+        commit-message: true
