@@ -40,12 +40,13 @@ def main():
     day_num = login_in_club(username, password)
     print("day_num = {0}".format(day_num))
     try:
-        with open("sign_in_days", "w") as f:
+        with open("sign_in_days.txt", "w") as f:
             f.write(day_num)
     except Exception as e:
         logging.error(e)
         sys.exit(1)
-    os.system("echo sign_in_days")
+    os.system("echo sign_in_days.txt")
+    
 
 if __name__ == "__main__":
     init_logger()
