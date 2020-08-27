@@ -54,7 +54,7 @@ jobs:
         username: ${{ secrets.MAIL_USERNAME }}
         password: ${{ secrets.EMAIL_PASSWORD }}
         subject: Shanghai Weather Report (${{env.REPORT_DATE}})
-        body: "test"
+        body: (${{env.CLUB_DAY_NUMERS}})
         to: ${{ secrets.TEST_EMAIL }}
         from: GitHub Actions
         content_type: text/html
