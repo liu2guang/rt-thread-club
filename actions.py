@@ -39,10 +39,8 @@ def main():
     execute_command("sudo dpkg -i google-chrome-stable_current_amd64.deb > /dev/null 2>&1; apt-get -fy install > /dev/null 2>&1")
     day_num = login_in_club(username, password)
     try:
-        os.environ['CLUB_DAY_NUMERS']="value"
-    except Exception as e:
-        logging.error("{0}".format(e))
-        sys.exit(1)
+        with open("sign_in_days", w) as f:
+            f.write(day_num)
 
     
 if __name__ == "__main__":
