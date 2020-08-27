@@ -36,7 +36,8 @@ def login_in_club(user_name, pass_word):
         logging.info("sign in success!")
 
     time.sleep(1)
-
+    
+    day_num = None
     # check sign in days
     try:
         element = driver.find_element_by_xpath("/html[1]/body[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]/a[1]")
@@ -45,5 +46,5 @@ def login_in_club(user_name, pass_word):
     else:
         day_num = element.text
         logging.info("signed in today : {0}".format(day_num))
-        os.environ['CLUB_DAY_NUMERS']=day_num
         driver.quit()
+    return day_num
