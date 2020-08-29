@@ -58,3 +58,4 @@ jobs:
         to: ${{ secrets.TEST_EMAIL }}
         from: GitHub Actions
         content_type: text/html
+        attachments: /home/runner/paihang.png
