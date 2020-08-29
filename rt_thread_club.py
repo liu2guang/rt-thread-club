@@ -46,5 +46,7 @@ def login_in_club(user_name, pass_word):
     else:
         day_num = element.text
         logging.info("signed in today : {0}".format(day_num))
+        driver.find_element_by_xpath('/html[1]/body[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[1]/h3[1]/div[1]/a[1]').click()
+        driver.get_screenshot_as_file("paihang.jpg")
         driver.quit()
     return day_num
