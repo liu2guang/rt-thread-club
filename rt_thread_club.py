@@ -12,21 +12,20 @@ def login_in_club(user_name, pass_word):
     option.add_argument('no-sandbox')
     option.add_argument('disable-dev-shm-usage')
     driver = webdriver.Chrome(chrome_options=option)
-
+    driver.maximize_window()
     # login in
     driver.get("https://www.rt-thread.org/account/user/index.html?response_type=code&authorized=yes&scope=basic&state=1588816557615&client_id=30792375&redirect_uri=https://club.rt-thread.org/index/user/login.html")
-
-    driver.find_element_by_id("username").click()
-    driver.find_element_by_id('username').clear()
-    time.sleep(1)
-    driver.find_element_by_id('username').send_keys(user_name)
-    driver.find_element_by_id('password').click()
-    driver.find_element_by_id('password').clear()
-    time.sleep(1)
-    driver.find_element_by_id('password').send_keys(pass_word)
+    element = driver.find_element_by_id("username")
+    element.send_keys(user_name)
+    element = driver.find_element_by_id('password')
+    element.send_keys(pass_word)
     driver.find_element_by_id('login').click()
-
     time.sleep(10)
+
+    current_url = driver.current_url
+    if current_url != "https://club.rt-thread.org/":
+        logging.error("username or password error, please check it, login in failed!");
+        sys.exit(1)
     try:
         element = driver.find_element_by_link_text(u"立即签到")
     except Exception as e:
@@ -36,7 +35,7 @@ def login_in_club(user_name, pass_word):
         logging.info("sign in success!")
 
     time.sleep(1)
-    
+
     day_num = None
     # check sign in days
     try:
@@ -47,6 +46,7 @@ def login_in_club(user_name, pass_word):
         day_num = element.text
         logging.info("signed in today : {0}".format(day_num))
         driver.find_element_by_xpath('/html[1]/body[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[1]/h3[1]/div[1]/a[1]').click()
+        time.sleep(5)
         driver.get_screenshot_as_file("/home/runner/paihang.png")
         driver.quit()
     return day_num
